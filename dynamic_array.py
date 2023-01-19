@@ -31,7 +31,10 @@ class DArray:
     
     #Increasing capacity by times 2, creating a new array with that capacity and copying all the elements into the new array
     def resize(self):
-        self.capacity *= 2
+        if self.capacity == 0:
+            self.capacity = 2
+        else:
+            self.capacity *= 2
         new_arr = self.create(self.capacity)
         for i in range(self.length):
             new_arr[i] = self.array[i]
@@ -100,4 +103,6 @@ if __name__ == "__main__":
     arr.pop()
     print(arr)
     arr.clear()
+    print(arr)
+    arr.append(10)
     print(arr)
