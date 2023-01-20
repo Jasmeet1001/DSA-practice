@@ -53,8 +53,7 @@ class SLinkedList:
     def removeFront(self):
         if self.head == None:
             raise Exception("Cannot Remove from empty linked list")
-        temp = self.head.next
-        self.head = temp
+        self.head = self.head.next
 
     def removeNode(self, data):
         if self.head == None:
@@ -63,11 +62,12 @@ class SLinkedList:
         ptr1 = self.head.next
         while(ptr1.next != None):
             if (ptr1.data == data):
-                ptr1 = ptr1.next
+                # ptr1 = ptr1.next
                 break
             ptr = ptr.next
             ptr1 = ptr1.next
-        ptr.next = ptr1
+        ptr.next = ptr1.next
+        return
     
     def removeAt(self, position):
         if self.head == None:
@@ -91,6 +91,7 @@ if __name__ == "__main__":
     llist.insertEnd(70)
     llist.insertFront(30)
     llist.insertAt(2, 4)
+
     llist.removeEnd()
     llist.removeFront()
     llist.removeAt(4)
