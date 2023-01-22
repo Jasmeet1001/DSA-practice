@@ -53,7 +53,10 @@ class SLinkedList:
     def removeFront(self):
         if self.head == None:
             raise Exception("Cannot Remove from empty linked list")
-        self.head = self.head.next
+        ptr = self.head
+        self.head = ptr.next
+        ptr.next = None
+
 
     def removeNode(self, data):
         if self.head == None:
