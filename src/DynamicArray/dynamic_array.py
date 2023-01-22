@@ -47,6 +47,17 @@ class DArray:
         self.length += 1
         self.array[self.index] = ele
 
+    #Extend method similar to how python extend method works
+    #Adds an iterable to the DArray object and returns a new DArray object with both their values
+    def extend(self, iterable):
+        for i in range(len(iterable)):
+            if self.length == self.capacity:
+                self.resize()
+            self.length += 1
+            self.index += 1
+            self.array[self.index] = iterable[i]
+
+
     #Inserting an element at a particular index
     def insert(self, ele, index):
         if index < 0 or index >= self.index:
@@ -93,16 +104,20 @@ class DArray:
 
 if __name__ == "__main__":
     arr = DArray()
+    arr1 = DArray()
     for i in range(10):
         arr.append(i)
-    print(arr)
+        arr1.append(i)
     arr.insert(50, 2)
+    arr.append(10)
+
     print(arr)
+    print(arr1)
+    arr1.extend(arr)
+    print(arr1)
+    
     arr.remove(4)
-    print(arr)
     arr.pop()
     print(arr)
     arr.clear()
-    print(arr)
-    arr.append(10)
     print(arr)
